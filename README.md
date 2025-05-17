@@ -23,7 +23,7 @@ This is a Flask web application with a PostgreSQL database for managing a car co
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/vulnerable-car_collection.git
+git clone https://github.com/yourusername/vulnerable_car_collection.git
 cd vulnerable_car_collection
 ```
 
