@@ -1,0 +1,30 @@
+# fly.toml app configuration file generated for car-collection-app on 2024-04-26T11:25:54+03:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = 'car-collection-app'
+primary_region = 'arn'
+
+[build]
+
+[env]
+  PORT = "5000"
+
+[[services]]
+  internal_port = 5000
+
+[[services.ports]]
+  handlers = ["http"]
+  port = 80  # Expose your Flask app on port 80 for HTTP traffic
+
+[http_service]
+  internal_port = 5000
+  force_https = true
+  auto_stop_machines = true
+  auto_start_machines = true
+  min_machines_running = 0
+  processes = ['app']
+
+[[vm]]
+  size = 'shared-cpu-1x'

@@ -1,0 +1,38 @@
+{% extends "base.html"%}
+
+{% block content %}
+    <br>
+    <h1 style="text-align: center;">Create new account by filling the form below!</h1>
+    <br>
+    <br>
+
+    <form action="/signup" method = "POST">
+        <div style="text-align: center;">
+            <div class = "signup-form" style="display: inline-block;">
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label" style="width: 400px; display: inline-block; text-align: left;">Username</label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" name="username" placeholder="enter username (max 20 characters):" required {% if username and not success %} value="{{username}}" {% endif %} style="width: 400px;" minlength="1" maxlength="20">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label" style="width: 400px; display: inline-block; text-align: left;">Password</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1" name="password" required placeholder="enter password (8-20 characters):" style="width: 400px;" minlength="8" maxlength="20" >
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label" style="width: 400px; display: inline-block; text-align: left;"> Confirm password</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1" name="password2" required placeholder="confirm password:" style="width: 400px;" minlength="8" maxlength="20">
+                </div>
+                <div class="sign-up-button">
+                    <button type="submit" class="btn btn-secondary"> Create</button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <br>
+    {% if message %}
+        <div style="text-align: center;">
+            {{ message }}
+        </div>
+    {% endif %}
+  </body>
+</html>
+{% endblock %}

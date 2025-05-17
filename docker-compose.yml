@@ -1,0 +1,32 @@
+version: "3.9"
+
+services:
+  db:
+    image: postgres:15
+    restart: always
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: secret
+      POSTGRES_DB: mydatabasename
+    volumes:
+      - db_data:/var/lib/postgresql/data
+      - ./schema.sql:/docker-entrypoint-initdb.d/schema.sql:ro
+    ports:
+      - "5432:5432"
+
+  web:
+    build: .
+    command: flask run --host=0.0.0.0 --port=5000
+    environment:
+      DATABASE_URL: postgresql://user:secret@db:5432/mydatabasename
+      SECRET_KEY: secret
+      FLY_DEPLOYMENT: "False"
+    ports:
+      - "5001:5000"
+    depends_on:
+      - db
+    volumes:
+      - .:/code
+
+volumes:
+  db_data:

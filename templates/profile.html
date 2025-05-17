@@ -1,0 +1,52 @@
+{% extends "base.html"%} {% block content %}
+<style>
+  .buttons-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .buttons-container {
+    display: flex;
+    gap: 10px;
+  }
+</style>
+<br />
+<h1>Hello, {{session["username"]}} welcome back to your car collection!</h1>
+<br />
+<br />
+<h3>Your garages:</h3>
+<br />
+<table class="table table-striped table-hover" style="max-width: 600px">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Cars inside</th>
+      <th scope="col">capacity of garage</th>
+      <th scope="col">Open/Remove garage</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for garage, cars_in in zip(garages, cars) %}
+    <tr>
+      <td>{{garage.name}}</td>
+      <td>{{cars_in}}</td>
+      <td>{{garage.capacity}}</td>
+      <td class="buttons-column">
+        <div class="buttons-container">
+          <a href="/garage/{{garage.id}}"
+            ><button type="button" class="btn btn-primary btn-sm open-button">
+              Open
+            </button></a
+          >
+          <a href="/remove_garage/{{garage.id}}"
+            ><button type="button" class="btn btn-dark btn-sm remove-button">
+              Remove
+            </button></a
+          >
+        </div>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
