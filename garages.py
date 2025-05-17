@@ -20,6 +20,12 @@ def create_garage_(name: str, capacity: int):
         return data
     return data
 def remove_garage_(garage_id: int):
+    # Broken access control: No ownership check if garage is actually user's garage
+    # user_id = get_user_id()
+    # sql_check = text("SELECT 1 FROM usergarages WHERE user_id=:user_id AND garage_id=:garage_id")
+    # result = db.session.execute(sql_check, {"user_id": user_id, "garage_id": garage_id}).fetchone()
+    # if not result:
+    #     raise Exception("Unauthorized: You do not own this garage.")
     sql1 = text("DELETE from garages where garages.id=:garage_id")
     sql2 = text("""SELECT cars.id from cars join garagecars on cars.id = garagecars.car_id 
                                   join garages on garages.id = garagecars.garage_id where garagecars.garage_id=:garage_id""")
@@ -32,6 +38,13 @@ def remove_garage_(garage_id: int):
     db.session.execute(sql1, {"garage_id":garage_id})
     db.session.commit()
 def open_garage(garage_id: int):
+    # Broken access control: No ownership check
+    # user_id = get_user_id()
+    # sql_check = text("SELECT 1 FROM usergarages WHERE user_id=:user_id AND garage_id=:garage_id")
+    # result = db.session.execute(sql_check, {"user_id": user_id, "garage_id": garage_id}).fetchone()
+    # if not result:
+    #     raise Exception("Unauthorized: You do not own this garage.")
+
     sql1 = text("SELECT garages.name from garages where id=:garage_id")
     sql2 = text("""SELECT cars.id, cars.brand, cars.model, cars.prod_year from cars join garagecars on cars.id = garagecars.car_id
                  join garages on garages.id = garagecars.garage_id where garagecars.garage_id=:garage_id""")
