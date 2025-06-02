@@ -55,3 +55,10 @@ docker compose up --build
 This web application security risk is present in our application as logged in user can open other user's garages without being authorized for that. This can be implemented by modifying the url address from `http://localhost:5001/garage/<logged-user-own-garage-id>` to `http://localhost:5001/garage/target-garage-id` after which we can see other user's garage. This is totally wrongly coded, since we do not check in the garage route if the current logged user owns the garage that needs to be opened.
 
 A solution to the flaw can be obtained with uncommenting the block of code starting from line https://github.com/BorisBanchev/vulnerable_car_collection/blob/main/routes.py#L150
+
+### Vulnerability 2.
+
+**A02:2021 – Cryptographic Failures**
+This vulnerability is active in the application since users' passwords are stored in plain text into the database without applying any encryption to the sensitive data. According to the OWASP recommendations it is crucial to apply strong encryption when dealing with sensitive data that belongs to users. In the screenshots folder in the flaw-2 subfolder we can see that passwords are stored in the database as they are writtend from the client.
+
+A solution to the flaw can be obtained with uncommenting the block of code starting from lines https://github.com/BorisBanchev/vulnerable_car_collection/blob/main/validate.py#L67 and https://github.com/BorisBanchev/vulnerable_car_collection/blob/main/routes.py#L6

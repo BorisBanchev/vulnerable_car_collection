@@ -64,7 +64,11 @@ def login_to_account_valid(username: str, password: str):
         return data
     if user:
         hash_value = user.password_hash
-        if check_password_hash(hash_value, password) and user.username == username:
+        # if check_password_hash(hash_value, password) and user.username == username:
+        #     success = True
+        #     data = empty_fields, message, success
+        #     return data
+        if hash_value == password and user.username == username:
             success = True
             data = empty_fields, message, success
             return data
