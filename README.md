@@ -69,3 +69,9 @@ A solution to the flaw can be obtained with uncommenting the blocks of code star
 SQL injection vulnerability is really dangerous security leak in the web application since it can lead to database manipulation and in a way that important user data can be stolen, modified or deleted. In our application the user can retrieve the first user's password from the table users by modifying the url from `/garage/<garage-id>` to `/garage/<garage-id> UNION SELECT password_hash FROM users LIMIT 1 OFFSET 0 --` so the user will be able to see the first users password on the garage page on his screen which is totally unaccepted. To prevent SQL injections like this we need to use parameterized sql queries and use text() to prevent these situations of leaking information.
 
 A solution to the flaw can be obtained with uncommenting the block of code starting from line https://github.com/BorisBanchev/vulnerable_car_collection/blob/main/garages.py#L35
+
+### Vulnerability 4.
+
+**A06:2021 – Vulnerable and Outdated Components**
+Using outdated and unsecure versions of libraries or components can lead to attackers exploiting vulnerabilities to gain unauthorized access, execute code, compromise data or take control of the system. Currently this flaws is present with the outdated versions of Flask and Flask-SQLAlchemy as their versions are 2.0.0. To prevent this vulnerability, we need to change in the https://github.com/BorisBanchev/vulnerable_car_collection/blob/main/requirements.txt `Flask==2.0.0` to `Flask==3.0.2` and `Flask-SQLAlchemy==2.0.0` to `Flask-SQLAlchemy==3.1.1` and run
+`pip3 install Flask==3.0.2 Flask-SQLAlchemy==3.1.1`
