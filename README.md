@@ -47,7 +47,7 @@ docker compose up --build
 
 ---
 
-## Vulnerabilities chosen from the \_[OWASP Top 10:2021](https://owasp.org/Top10/)
+## Vulnerabilities chosen from the [OWASP Top 10:2021](https://owasp.org/Top10/)
 
 ### Vulnerability 1.
 
