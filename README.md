@@ -61,4 +61,4 @@ A solution to the flaw can be obtained with uncommenting the block of code start
 **A02:2021 – Cryptographic Failures**
 This vulnerability is active in the application since users' passwords are stored in plain text into the database without applying any encryption to the sensitive data. According to the OWASP recommendations it is crucial to apply strong encryption when dealing with sensitive data that belongs to users. In the screenshots folder in the flaw-2 subfolder we can see that passwords are stored in the database as they are writtend from the client.
 
-A solution to the flaw can be obtained with uncommenting the blocks of code starting from lines https://github.com/BorisBanchev/vulnerable_car_collection/blob/main/validate.py#L67 and https://github.com/BorisBanchev/vulnerable_car_collection/blob/main/routes.py#L6
+A solution to the flaw can be obtained with uncommenting the blocks of code starting from lines https://github.com/BorisBanchev/vulnerable_car_collection/blob/main/validate.py#L67 and https://github.com/BorisBanchev/vulnerable_car_collection/blob/main/signup.py#L6
