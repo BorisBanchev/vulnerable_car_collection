@@ -11,6 +11,7 @@ from login import login_to_account
 from garages import create_garage_, remove_garage_, open_garage, cars_inside
 from cars import add_car_, remove_car_
 from db import db
+from user import get_user_id
 
 app.secret_key = getenv("SECRET_KEY")
 app.jinja_env.globals.update(zip=zip)
@@ -138,12 +139,6 @@ def create_garage():
 
 @app.route("/remove_garage/<int:garage_id>")
 def remove_garage(garage_id: int):
-    # Broken access control: No ownership check
-    # user_id = get_user_id()
-    # sql_check = text("SELECT 1 FROM usergarages WHERE user_id=:user_id AND garage_id=:garage_id")
-    # result = db.session.execute(sql_check, {"user_id": user_id, "garage_id": garage_id}).fetchone()
-    # if not result:
-    #     return render_template("error.html", message="Unauthorized: You do not own this garage.")
     remove_garage_(garage_id)
     return redirect("/profile")
 
@@ -152,7 +147,6 @@ def remove_garage(garage_id: int):
 def garage(garage_id: int):
     try:
         if session["username"]:
-            # Broken access aontrol: No ownership check
             # user_id = get_user_id()
             # sql_check = text("SELECT 1 FROM usergarages WHERE user_id=:user_id AND garage_id=:garage_id")
             # result = db.session.execute(sql_check, {"user_id": user_id, "garage_id": garage_id}).fetchone()
@@ -228,11 +222,5 @@ def add_car():
 def remove_car():
     garage_id = request.args.get("garage_id")
     car_id = request.args.get("car_id")
-    # Broken access control: No ownership check
-    # user_id = get_user_id()
-    # sql_check = text("SELECT 1 FROM usercars WHERE user_id=:user_id AND car_id=:car_id")
-    # result = db.session.execute(sql_check, {"user_id": user_id, "car_id": car_id}).fetchone()
-    # if not result:
-    #     return render_template("error.html", message="Unauthorized: You do not own this car.")
     remove_car_(car_id)
     return redirect(url_for("garage", garage_id=garage_id))

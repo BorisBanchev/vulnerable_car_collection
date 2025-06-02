@@ -6,12 +6,6 @@ from user import get_user_id
 from validate import add_car_valid
 
 def remove_car_(car_id: int):
-    # Broken access control: No ownership check for the car to be owned by the user
-    # user_id = get_user_id()
-    # sql_check = text("SELECT 1 FROM usercars WHERE user_id=:user_id AND car_id=:car_id")
-    # result = db.session.execute(sql_check, {"user_id": user_id, "car_id": car_id}).fetchone()
-    # if not result:
-    #     raise Exception("Unauthorized: You do not own this car.")
     sql = text("DELETE from cars where cars.id=:car_id")
     db.session.execute(sql, {"car_id":car_id})
     db.session.commit()
