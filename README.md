@@ -51,7 +51,7 @@ docker compose up --build
 
 ### Vulnerability 1.
 
-**A01:2021 – Broken Access Control**
+**A01:2021 – Broken Access Control:**
 This web application security risk is present in our application as logged in user can open other user's garages without being authorized for that. This can be implemented by modifying the url address from `http://localhost:5001/garage/<logged-user-own-garage-id>` to `http://localhost:5001/garage/target-garage-id` after which we can see other user's garage. This is totally wrongly coded, since we do not check in the garage route if the current logged user owns the garage that needs to be opened.
 
 A solution to the flaw can be obtained with uncommenting the block of code starting from line https://github.com/BorisBanchev/vulnerable_car_collection/blob/main/routes.py#L150
