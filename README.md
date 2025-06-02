@@ -62,3 +62,10 @@ A solution to the flaw can be obtained with uncommenting the block of code start
 This vulnerability is active in the application since users' passwords are stored in plain text into the database without applying any encryption to the sensitive data. According to the OWASP recommendations it is crucial to apply strong encryption when dealing with sensitive data that belongs to users. In the screenshots folder in the flaw-2 subfolder we can see that passwords are stored in the database as they are writtend from the client.
 
 A solution to the flaw can be obtained with uncommenting the blocks of code starting from lines https://github.com/BorisBanchev/vulnerable_car_collection/blob/main/validate.py#L68 and https://github.com/BorisBanchev/vulnerable_car_collection/blob/main/signup.py#L7
+
+### Vulnerability 3.
+
+**A03:2021 – Injection**
+SQL injection vulnerability is really dangerous security leak in the web application since it can lead to database manipulation and in a way that important user data can be stolen, modified or deleted. In our application the user can retrieve the first user's password from the table users by modifying the url from `/garage/<garage-id>` to `/garage/<garage-id> UNION SELECT password_hash FROM users LIMIT 1 OFFSET 0 --` so the user will be able to see the first users password on the garage page on his screen which is totally unaccepted. To prevent SQL injections like this we need to use parameterized sql queries and use text() to prevent these situations of leaking information.
+
+A solution to the flaw can be obtained with uncommenting the block of code starting from line https://github.com/BorisBanchev/vulnerable_car_collection/blob/main/garages.py#L35

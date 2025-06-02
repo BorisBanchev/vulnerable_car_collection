@@ -3,6 +3,7 @@ from werkzeug.security import generate_password_hash
 from db import db
 from validate import create_account_valid
 def create_account(username: str, password: str, password2: str):
+    # --A02:2021 – Cryptographic Failures--
     # sql = text("INSERT INTO users (username, password_hash) VALUES (:username, :password)")
     # valid = create_account_valid(username, password, password2)
     # if valid[2]:
@@ -10,6 +11,7 @@ def create_account(username: str, password: str, password2: str):
     #     db.session.commit()
     #     return valid
     # return valid
+    
     sql = text("INSERT INTO users (username, password_hash) VALUES (:username, :password)")
     valid = create_account_valid(username, password, password2)
     if valid[2]:

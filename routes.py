@@ -143,10 +143,11 @@ def remove_garage(garage_id: int):
     return redirect("/profile")
 
 
-@app.route("/garage/<int:garage_id>")
-def garage(garage_id: int):
+@app.route("/garage/<garage_id>")
+def garage(garage_id):
     try:
         if session["username"]:
+            # --A01:2021 – Broken Access Control--
             # user_id = get_user_id()
             # sql_check = text("SELECT 1 FROM usergarages WHERE user_id=:user_id AND garage_id=:garage_id")
             # result = db.session.execute(sql_check, {"user_id": user_id, "garage_id": garage_id}).fetchone()
