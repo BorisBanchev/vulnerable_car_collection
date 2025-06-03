@@ -39,6 +39,14 @@ docker compose up --build
 - The database and user are created automatically.
 - The schema from `schema.sql` is loaded automatically.
 
+When uncommenting the fixes in the code and saving, you need to restart the application with 
+```bash
+docker compose down
+```
+And running it again with 
+```bash
+docker compose up --build
+```
 ---
 
 ### 3. Access the Application
