@@ -34,7 +34,6 @@ def open_garage(garage_id: int):
     # --A03:2021 – Injection--
     # sql1 = text("SELECT garages.name from garages where id=:garage_id")
     # garage_name = db.session.execute(sql1, {"garage_id": garage_id}).fetchone()[0]
-    # sql2 = text("""SELECT cars.id, cars.brand, cars.model, cars.prod_year from cars join garagecars on cars.id = garagecars.car_id join garages on garages.id = garagecars.garage_id where garagecars.garage_id=:garage_id""")
     # if str(garage_id).isdigit():
     #     sql2 = text("""SELECT cars.id, cars.brand, cars.model, cars.prod_year
     #                    FROM cars
@@ -45,8 +44,6 @@ def open_garage(garage_id: int):
     #     cars = []
     # return (garage_name, cars)
     sql1 = text(f"SELECT garages.name from garages where id={garage_id}")
-    sql2 = text("""SELECT cars.id, cars.brand, cars.model, cars.prod_year from cars join garagecars on cars.id = garagecars.car_id
-                 join garages on garages.id = garagecars.garage_id where garagecars.garage_id=:garage_id""")
     garage_name = db.session.execute(sql1).fetchone()[0]
     if str(garage_id).isdigit():
         sql2 = text("""SELECT cars.id, cars.brand, cars.model, cars.prod_year

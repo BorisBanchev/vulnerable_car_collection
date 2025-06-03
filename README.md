@@ -73,5 +73,5 @@ A solution to the flaw can be obtained with uncommenting the block of code start
 ### Vulnerability 4.
 
 **A06:2021 – Vulnerable and Outdated Components**
-Using outdated and unsecure versions of libraries or components can lead to attackers exploiting vulnerabilities to gain unauthorized access, execute code, compromise data or take control of the system. Currently this flaws is present with the outdated versions of Flask and Flask-SQLAlchemy as their versions are 2.0.0. To prevent this vulnerability, we need to change in the https://github.com/BorisBanchev/vulnerable_car_collection/blob/main/requirements.txt `Flask==2.0.0` to `Flask==3.0.2` and `Flask-SQLAlchemy==2.0.0` to `Flask-SQLAlchemy==3.1.1` and run
+Using outdated and unsecure versions of libraries or components can lead to attackers exploiting vulnerabilities to gain unauthorized access, execute code, compromise data or take control of the system. Currently this flaws is present with the outdated versions of Flask (2.0.0) and Flask-SQLAlchemy (2.5.1). To prevent this vulnerability, we need to change in the https://github.com/BorisBanchev/vulnerable_car_collection/blob/main/requirements.txt `Flask==2.0.0` to `Flask==3.0.2` and `Flask-SQLAlchemy==2.5.1` to `Flask-SQLAlchemy==3.1.1` and run
 `pip3 install Flask==3.0.2 Flask-SQLAlchemy==3.1.1`
