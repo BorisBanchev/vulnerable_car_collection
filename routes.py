@@ -139,6 +139,9 @@ def create_garage():
 
 @app.route("/remove_garage/<int:garage_id>")
 def remove_garage(garage_id: int):
+    # --CSRF vulnerability--
+    # if session["csrf_token"] != request.args.get("csrf_token"):
+    #     abort(403)
     remove_garage_(garage_id)
     return redirect("/profile")
 
