@@ -30,7 +30,11 @@ cd vulnerable_car_collection
 ---
 
 ### 2. Start the Application
-
+First run the command 
+```bash
+docker compose down -v
+```
+Then initialize in only in the beginning the database and setup the application with
 ```bash
 docker compose up --build
 ```
@@ -45,7 +49,7 @@ docker compose down
 ```
 And running it again with 
 ```bash
-docker compose up --build
+docker compose up
 ```
 ---
 
